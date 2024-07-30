@@ -3,7 +3,7 @@ package ru.tecforce.identity.user.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-//import ru.tecforce.identity.user.agreement.entity.UserAgreement;
+import ru.tecforce.identity.user.agreement.entity.UserAgreement;
 
 import javax.persistence.*;
 
@@ -52,6 +52,6 @@ public class User {
     List<Phone> phones = new ArrayList<>();
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     List<Email> emails = new ArrayList<>();
-//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-//    List<UserAgreement> agreements = new ArrayList<>();
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    List<UserAgreement> agreements = new ArrayList<>();
 }

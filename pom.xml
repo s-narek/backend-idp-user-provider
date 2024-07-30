@@ -15,8 +15,8 @@
         <jboss.logging.version>3.5.3.Final</jboss.logging.version>
         <version.keycloak>17.0.0</version.keycloak>
         <version.hibernate.javax.persistence>1.0.2.Final</version.hibernate.javax.persistence>
-        <maven.compiler.plugin>3.10.1</maven.compiler.plugin>
-        <maven.shade.plugin>3.3.0</maven.shade.plugin>
+        <maven.compiler.plugin>3.11.0</maven.compiler.plugin>
+        <maven.shade.plugin>3.2.4</maven.shade.plugin>
     </properties>
 
     <dependencies>

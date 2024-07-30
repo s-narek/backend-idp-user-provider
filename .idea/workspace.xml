@@ -4,11 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="925807b0-1b9c-4bee-82da-f4cbb5a2e65f" name="Changes" comment="" />
+    <list default="true" id="925807b0-1b9c-4bee-82da-f4cbb5a2e65f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/tecforce/identity/user/agreement/entity/UserAgreement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/tecforce/identity/user/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/tecforce/identity/user/entity/User.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -26,7 +33,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Volumes/Narek/project3/backend-idp-user-provider/src/main/resources/META-INF",
+    "last_opened_file_path": "/Volumes/Narek/project3/backend-idp-user-provider/src/main/java/ru/tecforce/identity/user",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -71,6 +78,7 @@
       <workItem from="1722083363709" duration="16275000" />
       <workItem from="1722115021773" duration="987000" />
       <workItem from="1722116279442" duration="3603000" />
+      <workItem from="1722206589877" duration="3372000" />
     </task>
     <servers />
   </component>
