@@ -1,8 +1,8 @@
 quarkus.datasource.user-store.db-kind=postgresql
 quarkus.datasource.user-store.username=postgres
 quarkus.datasource.user-store.password=postgres
-quarkus.datasource.user-store.jdbc.url=jdbc:postgresql://localhost:5432/keycloak
+quarkus.datasource.user-store.jdbc.url=jdbc:postgresql://localhost:5432/postgres
 quarkus.datasource.user-store.jdbc.acquisition-timeout=30
 
 quarkus.hibernate-orm.dialect=org.hibernate.dialect.PostgreSQLDialect
-quarkus.hibernate-orm.hbm2ddl.auto=update
+quarkus.hibernate-orm.hbm2ddl.auto=validate

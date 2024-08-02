@@ -11,27 +11,27 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-@Entity
+@Entity(name = "user")
 @NamedQueries({
         @NamedQuery(
                 name = "getUserByUsername",
-                query = "SELECT u FROM User u WHERE u.firstName = :firstName"
+                query = "SELECT u FROM user u WHERE u.firstName = :firstName"
         ),
         @NamedQuery(
                 name = "getUserByPersonnelNumber",
-                query = "SELECT u FROM User u WHERE u.personnelNumber = :personnelNumber"
+                query = "SELECT u FROM user u WHERE u.personnelNumber = :personnelNumber"
         ),
         @NamedQuery(
                 name = "getUserCount",
-                query = "SELECT COUNT(u) FROM User u"
+                query = "SELECT COUNT(u) FROM user u"
         ),
         @NamedQuery(
                 name = "getAllUsers",
-                query = "SELECT u FROM User u"
+                query = "SELECT u FROM user u"
         ),
         @NamedQuery(
                 name = "searchForUser",
-                query = "SELECT u FROM User u WHERE " +
+                query = "SELECT u FROM user u WHERE " +
                         "(LOWER(u.firstName) LIKE :search OR LOWER(u.lastName) LIKE :search) " +
                         "ORDER BY u.firstName"
         )
@@ -39,14 +39,19 @@ import java.util.UUID;
 @Getter
 @Setter
 @NoArgsConstructor
+@Table(name = "\"user\"")
 public class User {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     UUID id;
     UUID externalId;
+    @Column(name = "first_name")
     String firstName;
+    @Column(name = "middle_name")
     String middleName;
+    @Column(name = "last_name")
     String lastName;
+    @Column(name = "personnel_number")
     String personnelNumber;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     List<Phone> phones = new ArrayList<>();

@@ -19,7 +19,7 @@ public class CustomUserProviderFactory implements UserStorageProviderFactory<Cus
 
     @Override
     public String getHelpText() {
-        return "Peanuts User Provider";
+        return "User Provider";
     }
 
     @Override

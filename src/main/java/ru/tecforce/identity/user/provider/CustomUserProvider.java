@@ -194,7 +194,7 @@ public class CustomUserProvider
         UserCredentialModel cred = (UserCredentialModel)input;
         UserAdapter adapter = getUserAdapter(user);
         // TODO Уточнить про пароль
-         adapter.setPassword(cred.getValue());
+        adapter.setPassword(cred.getValue());
 
         return true;
     }
@@ -216,7 +216,7 @@ public class CustomUserProvider
         if (!supportsCredentialType(credentialType)) return;
 
         // TODO Уточнить про пароль
-         getUserAdapter(user).setPassword(null);
+        getUserAdapter(user).setPassword(null);
     }
 
     @Override

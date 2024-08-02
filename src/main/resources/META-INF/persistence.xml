@@ -11,16 +11,16 @@
         <class>ru.tecforce.identity.user.entity.User</class>
         <class>ru.tecforce.identity.user.entity.Email</class>
         <class>ru.tecforce.identity.user.entity.Phone</class>
+        <class>ru.tecforce.identity.user.agreement.entity.UserAgreement</class>
+        <class>ru.tecforce.identity.user.agreement.entity.UserAgreementValue</class>
+        <class>ru.tecforce.identity.user.agreement.entity.AgreementType</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://127.0.0.1:5432/postgres"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/postgres?currentSchema=public"/>
             <property name="javax.persistence.jdbc.user" value="postgres"/>
             <property name="javax.persistence.jdbc.password" value="postgres"/>
-            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL9Dialect"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
 
-            <!-- Sets the name of the datasource to be the same as the datasource name in quarkus.properties-->
-            <property name="hibernate.connection.datasource" value="user-store" />
-            <property name="javax.persistence.transactionType" value="JTA" />
             <property name="hibernate.hbm2ddl.auto" value="update" />
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.format_sql" value="true"/>
