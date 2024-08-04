@@ -12,8 +12,8 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <jboss.logging.version>3.5.3.Final</jboss.logging.version>
-        <version.keycloak>17.0.0</version.keycloak>
+        <jboss.logging.version>3.6.0.Final</jboss.logging.version>
+        <version.keycloak>15.0.0</version.keycloak>
         <version.hibernate.javax.persistence>1.0.2.Final</version.hibernate.javax.persistence>
         <maven.compiler.plugin>3.11.0</maven.compiler.plugin>
         <maven.shade.plugin>3.2.4</maven.shade.plugin>
@@ -23,7 +23,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.7.2</version>
+            <version>42.7.3</version>
         </dependency>
         <!-- Keycloak dependencies -->
         <dependency>
@@ -71,6 +71,13 @@
             <scope>provided</scope>
         </dependency>
 
+<!--        <dependency>-->
+<!--            <groupId>javax.enterprise</groupId>-->
+<!--            <artifactId>cdi-api</artifactId>-->
+<!--            <version>2.0.SP1</version>-->
+<!--            <scope>provided</scope>-->
+<!--        </dependency>-->
+
         <!-- Lombok for getters/setters -->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -85,33 +92,24 @@
 
         <plugins>
             <plugin>
+                <groupId>org.jboss.jandex</groupId>
+                <artifactId>jandex-maven-plugin</artifactId>
+                <version>1.2.3</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>jandex</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven.compiler.plugin}</version>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>${maven.shade.plugin}</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                        <configuration>
-                            <artifactSet>
-                                <includes>
-                                    <include>com.maxmind.db:*</include>
-                                    <include>com.maxmind.geoip2:*</include>
-                                    <!--                  <include>software.amazon.awssdk:*</include>-->
-                                    <!--                  <include>org.reactivestreams:reactive-streams</include>-->
-                                </includes>
-                            </artifactSet>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+
         </plugins>
 
     </build>
