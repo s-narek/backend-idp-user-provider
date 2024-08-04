@@ -5,37 +5,20 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ru.tecforce.identity.user.agreement.entity.UserAgreement;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 @Entity(name = "user")
-@NamedQueries({
-        @NamedQuery(
-                name = "getUserByUsername",
-                query = "SELECT u FROM user u WHERE u.firstName = :firstName"
-        ),
-        @NamedQuery(
-                name = "getUserByPersonnelNumber",
-                query = "SELECT u FROM user u WHERE u.personnelNumber = :personnelNumber"
-        ),
-        @NamedQuery(
-                name = "getUserCount",
-                query = "SELECT COUNT(u) FROM user u"
-        ),
-        @NamedQuery(
-                name = "getAllUsers",
-                query = "SELECT u FROM user u"
-        ),
-        @NamedQuery(
-                name = "searchForUser",
-                query = "SELECT u FROM user u WHERE " +
-                        "(LOWER(u.firstName) LIKE :search OR LOWER(u.lastName) LIKE :search) " +
-                        "ORDER BY u.firstName"
-        )
-})
 @Getter
 @Setter
 @NoArgsConstructor

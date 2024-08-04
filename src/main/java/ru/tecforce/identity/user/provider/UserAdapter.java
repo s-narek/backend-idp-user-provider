@@ -1,6 +1,5 @@
 package ru.tecforce.identity.user.provider;
 
-import org.jboss.logging.Logger;
 import org.keycloak.common.util.MultivaluedHashMap;
 import org.keycloak.component.ComponentModel;
 import org.keycloak.models.KeycloakSession;
@@ -10,13 +9,11 @@ import org.keycloak.storage.adapter.AbstractUserAdapterFederatedStorage;
 import ru.tecforce.identity.user.entity.Email;
 import ru.tecforce.identity.user.entity.User;
 
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
 public class UserAdapter extends AbstractUserAdapterFederatedStorage {
-    private static final Logger log = Logger.getLogger(UserAdapter.class);
     protected User entity;
     protected String keycloakId;
 
@@ -30,18 +27,6 @@ public class UserAdapter extends AbstractUserAdapterFederatedStorage {
 
         this.entity = entity;
         this.keycloakId = StorageId.keycloakId(model, entity.getId().toString());
-    }
-
-    public String getPassword() {
-        // TODO Уточнить про пароль
-        // return entity.getPassword();
-        return "";
-    }
-
-    public void setPassword(String password) {
-        log.info("$ "+ "setPassword() called with: password = [" + password + "]");
-        // TODO Уточнить про пароль
-        // entity.setPassword(password);
     }
 
     @Override
@@ -64,7 +49,10 @@ public class UserAdapter extends AbstractUserAdapterFederatedStorage {
 
     @Override
     public String getEmail() {
-        return entity.getEmails().get(0).getEmail();
+        if (!entity.getEmails().isEmpty()) {
+            return entity.getEmails().get(0).getEmail();
+        }
+        return null;
     }
 
     @Override
@@ -74,45 +62,80 @@ public class UserAdapter extends AbstractUserAdapterFederatedStorage {
 
     @Override
     public void setSingleAttribute(String name, String value) {
-        if (name.equals("firstName")) {
-            entity.setFirstName(value);
-        } else if (name.equals("lastName")) {
-            entity.setLastName(value);
-        } else {
-            super.setSingleAttribute(name, value);
+        switch (name) {
+            case "firstName":
+                entity.setFirstName(value);
+                break;
+            case "lastName":
+                entity.setLastName(value);
+                break;
+            case "middleName":
+                entity.setMiddleName(value);
+                break;
+            case "personnelNumber":
+                entity.setPersonnelNumber(value);
+                break;
+            default:
+                super.setSingleAttribute(name, value);
+                break;
         }
     }
 
     @Override
     public void removeAttribute(String name) {
-        if (name.equals("firstName")) {
-            entity.setFirstName(null);
-        } else if (name.equals("lastName")) {
-            entity.setLastName(null);
-        } else {
-            super.removeAttribute(name);
+        switch (name) {
+            case "firstName":
+                entity.setFirstName(null);
+                break;
+            case "lastName":
+                entity.setLastName(null);
+                break;
+            case "middleName":
+                entity.setMiddleName(null);
+                break;
+            case "personnelNumber":
+                entity.setPersonnelNumber(null);
+                break;
+            default:
+                super.removeAttribute(name);
+                break;
         }
     }
 
     @Override
     public void setAttribute(String name, List<String> values) {
-        if (name.equals("firstName")) {
-            entity.setFirstName(values.get(0));
-        } else if (name.equals("lastName")) {
-            entity.setLastName(values.get(0));
-        } else {
-            super.setAttribute(name, values);
+        switch (name) {
+            case "firstName":
+                entity.setFirstName(values.get(0));
+                break;
+            case "lastName":
+                entity.setLastName(values.get(0));
+                break;
+            case "middleName":
+                entity.setMiddleName(values.get(0));
+                break;
+            case "personnelNumber":
+                entity.setPersonnelNumber(values.get(0));
+                break;
+            default:
+                super.setAttribute(name, values);
+                break;
         }
     }
 
     @Override
     public String getFirstAttribute(String name) {
-        if (name.equals("firstName")) {
-            return entity.getFirstName();
-        } if (name.equals("lastName")) {
-            return entity.getLastName();
-        } else {
-            return super.getFirstAttribute(name);
+        switch (name) {
+            case "firstName":
+                return entity.getFirstName();
+            case "lastName":
+                return entity.getLastName();
+            case "middleName":
+                return entity.getMiddleName();
+            case "personnelNumber":
+                return entity.getPersonnelNumber();
+            default:
+                return super.getFirstAttribute(name);
         }
     }
 
@@ -123,21 +146,24 @@ public class UserAdapter extends AbstractUserAdapterFederatedStorage {
         all.putAll(attrs);
         all.add("firstName", entity.getFirstName());
         all.add("lastName", entity.getLastName());
+        all.add("middleName", entity.getMiddleName());
+        all.add("personnelNumber", entity.getPersonnelNumber());
         return all;
     }
 
     @Override
     public Stream<String> getAttributeStream(String name) {
-        if (name.equals("firstName")) {
-            List<String> firstName = new LinkedList<>();
-            firstName.add(entity.getFirstName());
-            return firstName.stream();
-        } else if (name.equals("lastName")) {
-            List<String> lastName = new LinkedList<>();
-            lastName.add(entity.getLastName());
-            return lastName.stream();
-        } else {
-            return super.getAttributeStream(name);
+        switch (name) {
+            case "firstName":
+                return Stream.of(entity.getFirstName());
+            case "lastName":
+                return Stream.of(entity.getLastName());
+            case "middleName":
+                return Stream.of(entity.getMiddleName());
+            case "personnelNumber":
+                return Stream.of(entity.getPersonnelNumber());
+            default:
+                return super.getAttributeStream(name);
         }
     }
 }
